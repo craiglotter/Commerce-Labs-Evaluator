@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>MultiColumn-Flat Combobox with Autocomplete</title>
+<Style>
+BODY, P, TD { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt }
+H2,H3,H4,H5 { color: #ff9900; font-weight: bold; }
+H2 { font-size: 13pt; }
+H3 { font-size: 12pt; }
+H4 { font-size: 10pt; color: black; }
+PRE { BACKGROUND-COLOR: #FBEDBB; FONT-FAMILY: "Courier New", Courier, mono; WHITE-SPACE: pre; }
+CODE { COLOR: #990000; FONT-FAMILY: "Courier New", Courier, mono; }
+</style>
+<link rel="stylesheet" type=text/css href="http://www.codeproject.com/styles/global.css">
+</head>
+<body bgcolor="#FFFFFF" color=#000000>
+<h2><a name="Using_the_control">Using the control</a>: Examples on how to load 
+the combo</h2>
+<p>Add the control to your VS ToolBox 
+referencing the <code>MTGCComboBox.DLL</code> 
+file, then drag and drop the control to your form. First thing to notice: the 
+text control is empty! How many times we had to manually empty it, especially 
+with TextBoxes? Only with VS 2005 this dream will come true.... :)</p>
+<p>Let's go on! Now you can set its properties in the way you want in 
+design mode, and after that write the code to load the combo. <b>I want to 
+underline a thing: at least for now, you CAN'T add items to the combobox using 
+the <code>Items</code> property at Design Mode. You have to do it only at runtime!</b> </p>
+<p>For example, 
+suppose you want to load the combo with information about our five continents: 
+name, extension and population. You will have to do something like this:</p>
+<pre lang=vbnet>
+    comboContinent.BorderStyle = MTGCComboBox.TipiBordi.FlatXP
+    comboContinent.LoadingType = MTGCComboBox.CaricamentoCombo.ComboBoxItem
+    comboContinent.ColumnNum = 3
+    comboContinent.ColumnWidth = "80;120;100"
+
+    comboContinent.Items.Add(New MTGCComboBoxItem("Africa", "30,065,000 sq km", "807,419,000"))
+    comboContinent.Items.Add(New MTGCComboBoxItem("America", "42,293,000 sq km", "830,722,000"))
+    comboContinent.Items.Add(New MTGCComboBoxItem("Asia", "44,579,000 sq km", "3,701,000,000"))
+    comboContinent.Items.Add(New MTGCComboBoxItem("Europe", "9,938,000 sq km", "730,916,000 "))
+    comboContinent.Items.Add(New MTGCComboBoxItem("Oceania", "8,112,000 sq km", "31,090,000"))
+</pre>
+<p>The <code>ColumnNum</code> 
+is set to 3 and the widths are 80 pixels for the name, 120 for extension and 100 
+for population. Remember, if you don't want to show a column value just set is 
+width to 0.<br><br>
+ATTENTION: the <code>ColumnWidth</code> property code procedure automatically adds 20 
+pixel to <code>DropDownWith</code> property value if the columns' witdh sum is greater 
+then <code>DropDownWith</code> value, to take care of possibly vertical scrollbar shown in the DropDownList!<br><br>
+In this case, we add each <code>MTGCComboBoxItem</code> 
+with the correct values. A faster way to load the items is creating an array of&nbsp; <code>MTGCComboBoxItem</code>s 
+and then using the <code>Combobox.Items.AddRange</code> method 
+to load data. Here is the code:</p>
+<pre lang=vbnet>
+    Dim continentItems(4) As MTGCComboBoxItem
+
+    continentItems(0) = New MTGCComboBoxItem("Africa", "30,065,000 sq km", "807,419,000")
+    continentItems(1) = New MTGCComboBoxItem("America", "42,293,000 sq km", "830,722,000")
+    continentItems(2) = New MTGCComboBoxItem("Asia", "44,579,000 sq km", "3,701,000,000")
+    continentItems(3) = New MTGCComboBoxItem("Europe", "9,938,000 sq km", "730,916,000 ")
+    continentItems(4) = New MTGCComboBoxItem("Oceania", "8,112,000 sq km", "31,090,000")
+
+    comboContinent.Items.AddRange(continentItems)
+</pre>
+<p>The other way to load the combo is through a dataTable. In this case, we can 
+create a datatable with our information and then pass it as the <code>
+SourceDataTable</code> property:</p>
+<pre lang=vbnet>
+    Dim dtContinents As New DataTable("ContinentInfo")
+    dtContinents.Columns.Add("Name", System.Type.GetType("System.String"))
+    dtContinents.Columns.Add("Extension", System.Type.GetType("System.String"))
+    dtContinents.Columns.Add("Population", System.Type.GetType("System.String"))
+
+    Dim dr As DataRow
+    dr = dtContinents.NewRow
+
+    dr("Name") = "Africa"
+    dr("Extension") = "30,065,000 sq km"
+    dr("Population") = "807,419,000"
+
+    dtContinents.Rows.Add(dr)
+
+    dr = dtContinents.NewRow
+
+    dr("Name") = "America"
+    dr("Extension") = "42,293,000 sq km"
+    dr("Population") = "830,722,000"
+
+    dtContinents.Rows.Add(dr)
+    dr = dtContinents.NewRow
+
+    dr("Name") = "Asia"
+    dr("Extension") = "44,579,000 sq km"
+    dr("Population") = "3,701,000,000"
+
+    dtContinents.Rows.Add(dr)
+    dr = dtContinents.NewRow
+
+    dr("Name") = "Europe"
+    dr("Extension") = "9,938,000 sq km"
+    dr("Population") = "730,916,000"
+
+    dtContinents.Rows.Add(dr)
+    dr = dtContinents.NewRow
+
+    dr("Name") = "Oceania"
+    dr("Extension") = "8,112,000 sq km"
+    dr("Population") = "31,090,000"
+
+    dtContinents.Rows.Add(dr)
+
+    comboContinent.LoadingType = MTGCComboBox.CaricamentoCombo.DataTable
+    comboContinent.SourceDataString = New String(2) {"Name", "Extension", "Population"}
+    comboContinent.SourceDataTable = dtContinents
+</pre>
+<p>Obviously, in most cases you won't fill the DataTable manually (this is just 
+an example), but you will load the datatable through a DataAdapter from a 
+database and then pass it to the combobox. The <code>SourceDataString</code> 
+property is not mandatory, but remember that you have to set it BEFORE setting the 
+<code>SourceDataTable</code> or it won't have any effect and the first 
+<code>ColumnNum</code> columns of the datatable will be showed.</p>
+<p>When an item is selected, you can access to each column value in this way:</p>
+<pre lang=vbnet>
+	Dim Name, Population, Extension as String
+	
+	Name = comboContinent.SelectedItem.col1
+	Extension = comboContinent.SelectedItem.col2
+	Population= comboContinent.SelectedItem.col3
+</pre>
+</body>
+</html>

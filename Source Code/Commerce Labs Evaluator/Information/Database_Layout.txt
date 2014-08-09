@@ -1,0 +1,29 @@
+Log_Records
+-----------
+Log_ID (string)
+Log_Tutor (string)
+Log_Date (string)
+Log_Time (string)
+Log_Call_Type (string: Call_Type.Call_ID)
+Log_Call_Sub_Type (string: Call_Sub_Type.Call_Sub_ID)
+Log_Problem_Description (memo)
+Log_Modify_Date (string)
+Log_Modify_Time (string)
+Log_Modify_Tutor (string)
+
+Call_Type
+---------
+Call_ID (string)
+Call_Description (string)
+
+Call_Sub_Type
+-------------
+Call_Sub_ID (string)
+Call_Sub_Description (string)
+Call_Sub_Call_ID (string: foreign key: Call_Type.Call_ID)
+
+Audit_Logins
+------------
+Audit_Tutor (string)
+Audit_Date (string)
+Audit_Time (string)

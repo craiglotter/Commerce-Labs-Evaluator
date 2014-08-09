@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" version="1.9" modules="professional" RootPath=".">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="ProductCode" Value="{CD4B6A38-A183-4C3A-ADEA-1915E3BD955B}"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPPRODUCTICON" Value="controlPanelIcon.exe"/>
+    <ROW Property="BannerBitmap" Value="installer_background.jpg"/>
+    <ROW Property="DialogBitmap" Value="installer_background_dialog.jpg"/>
+    <ROW Property="Manufacturer" Value="Craig Lotter"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductVersion" Value="1.0.0"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{E17A10FD-8429-4371-89B1-D11F3872EA19}"/>
+    <ROW Property="ProductName" Value="Commerce Labs Evaluator"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="Inputs_DIR" Directory_Parent="TARGETDIR" DefaultDir="Inputs"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" Directory_Parent="" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="Application_Loader.exe" ComponentId="{32A855CF-089F-4982-AABE-B8441757FAB7}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="Application_Loader.exe" FullKeyPath="TARGETDIR\Application_Loader.exe"/>
+    <ROW Component="Commerce_Labs_Evaluator.exe" ComponentId="{CB264D94-448C-4215-A8C0-D25648DF12EF}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="Commerce_Labs_Evaluator.exe" FullKeyPath="TARGETDIR\Commerce Labs Evaluator.exe"/>
+    <ROW Component="Novell.Directory.Ldap.dll" ComponentId="{27F0C2A5-3885-41F3-9195-7DD979C722BE}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="Novell.Directory.Ldap.dll" FullKeyPath="TARGETDIR\Novell.Directory.Ldap.dll"/>
+    <ROW Component="UCT_Novell_Login_Shell.exe" ComponentId="{25D66BCC-DBAB-4A8D-B72E-93580862C9B9}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="UCT_Novell_Login_Shell.exe" FullKeyPath="TARGETDIR\UCT Novell Login Shell.exe"/>
+    <ROW Component="config.ini" ComponentId="{568D4EBF-85F5-495F-9869-249101A6CDFA}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="config.ini" FullKeyPath="TARGETDIR"/>
+    <ROW Component="mtgccombobox.dll" ComponentId="{5BF1A745-2CE7-412F-B399-C2993B745BDF}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="mtgccombobox.dll" FullKeyPath="TARGETDIR\mtgccombobox.dll"/>
+    <ROW Component="Application_Icon.ico" ComponentId="{1FD703A3-A423-41B6-8936-AAD87469BC50}" Directory_="Inputs_DIR" Attributes="0" Condition="" KeyPath="Splash_Image.jpg" FullKeyPath="TARGETDIR\Inputs"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Feature_Parent="" Title="MainFeature" Description="Description" Display="2" Level="1" Directory_="TARGETDIR" Attributes="0" Components="Application_Loader.exe Commerce_Labs_Evaluator.exe config.ini Application_Icon.ico mtgccombobox.dll Novell.Directory.Ldap.dll UCT_Novell_Login_Shell.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Novell.Directory.Ldap.dll" Component_="Novell.Directory.Ldap.dll" FileName="Novell~1.dll|Novell.Directory.Ldap.dll" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\Novell.Directory.Ldap.dll" SelfReg="false"/>
+    <ROW File="Splash_Image.jpg" Component_="Application_Icon.ico" FileName="Splash~1.jpg|Splash_Image.jpg" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\Inputs\Splash_Image.jpg" SelfReg="false"/>
+    <ROW File="config.ini" Component_="config.ini" FileName="config.ini" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\config.ini" SelfReg="false"/>
+    <ROW File="default_config.ini" Component_="config.ini" FileName="defaul~1.ini|default_config.ini" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\default_config.ini" SelfReg="false"/>
+    <ROW File="Inputs.txt" Component_="Application_Icon.ico" FileName="Inputs.txt" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\Inputs\Inputs.txt" SelfReg="false"/>
+    <ROW File="Application_Loader.exe" Component_="Application_Loader.exe" FileName="Applic~1.exe|Application_Loader.exe" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\Application_Loader.exe" SelfReg="false"/>
+    <ROW File="Commerce_Labs_Evaluator.exe" Component_="Commerce_Labs_Evaluator.exe" FileName="Commer~1.exe|Commerce Labs Evaluator.exe" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\Commerce Labs Evaluator.exe" SelfReg="false"/>
+    <ROW File="UCT_Novell_Login_Shell.exe" Component_="UCT_Novell_Login_Shell.exe" FileName="UCTNov~1.exe|UCT Novell Login Shell.exe" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\UCT Novell Login Shell.exe" SelfReg="false"/>
+    <ROW File="mtgccombobox.dll" Component_="mtgccombobox.dll" FileName="mtgcco~1.dll|mtgccombobox.dll" Version="" Language="" Attributes="" SourcePath="..\Commerce Labs Evaluator\Required Files\mtgccombobox.dll" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Source="" Target="A higher version of [ProductName] is installed."/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR" Type="307" Source="TARGETDIR" Target="[ProgramFilesFolder]\[ProductName]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="UpgradeCode" VersionMin="" VersionMax="ProductVersion" Language="" Attributes="1025" Remove=""/>
+    <ROW UpgradeCode="UpgradeCode" VersionMin="ProductVersion" VersionMax="" Language="" Attributes="2" Remove=""/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMergeModsComponent">
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Commerce_Labs_Evaluator" Directory_="SHORTCUTDIR" Name="Commer~1|Commerce Labs Evaluator" Component_="Application_Loader.exe" Target="[TARGETDIR]Application_Loader.exe" Arguments="" Description="" Hotkey="0" Icon_="controlPanelIcon.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+    <ROW Shortcut="Commerce_Labs_Evaluator_1" Directory_="DesktopFolder" Name="Commer~1|Commerce Labs Evaluator" Component_="Application_Loader.exe" Target="[TARGETDIR]Application_Loader.exe" Arguments="" Description="" Hotkey="0" Icon_="controlPanelIcon.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+    <ROW Shortcut="Uninstall_Commerce_Labs_Evaluator" Directory_="SHORTCUTDIR" Name="Uninst~1|Uninstall Commerce Labs Evaluator" Component_="Application_Loader.exe" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="" Hotkey="0" Icon_="SystemFolder_msiexec.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="SystemFolder_msiexec.exe" SourcePath="&lt;uninstall.ico&gt;" Index="0"/>
+    <ROW Name="controlPanelIcon.exe" SourcePath="Images\Application_Icon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="installer_background.jpg" SourcePath="Images\installer_background.jpg"/>
+    <ROW Name="installer_background_dialog.jpg" SourcePath="Images\installer_background_dialog.jpg"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ATTRIBUTE name="Start" value="WelcomeDlg FolderDlg VerifyReadyDlg"/>
+    <ATTRIBUTE name="Progress" value="ProgressDlg"/>
+    <ATTRIBUTE name="End" value="ExitDialog"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMediaComponent">
+    <ATTRIBUTE name="InstallationType" value="1"/>
+    <ATTRIBUTE name="MediaSize" value="0"/>
+    <ATTRIBUTE name="Compress" value="1"/>
+    <ATTRIBUTE name="Package" value="10"/>
+    <ATTRIBUTE name="PackageName" value="Release\Commerce Labs Evaluator Installer"/>
+    <ATTRIBUTE name="IconPath" value="Images\Application_Icon.ico?0"/>
+  </COMPONENT>
+</DOCUMENT>
